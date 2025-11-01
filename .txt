@@ -79,3 +79,26 @@ npm install --save-dev @types/bcrypt
 "scripts": {
   "start": "npx nodemon server.ts"
 }
+
+ng g c layouts/MainLayout
+ng g c layouts/AuthLayout
+
+export const routes: Routes = [
+  {
+    path: '',
+    component: MainLayoutComponent,
+    children: [
+      { path: '', component: HomeComponent },
+      { path: 'create', component: CreateComponent },
+      { path: 'single/:id', component: SingleComponent },
+    ],
+  },
+  {
+    path: '',
+    component: AuthLayoutComponent,
+    children: [
+      { path: 'login', component: LoginComponent },
+      { path: 'register', component: RegisterComponent },
+    ],
+  },
+];
